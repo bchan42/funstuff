@@ -1,60 +1,4 @@
-# # automating part
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
-# from webdriver_manager.chrome import ChromeDriverManager
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# import pickle # save and load cookies
-# import time
-
-
-# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), 
-#                           options=webdriver.ChromeOptions())
-# # driver = webdriver.Chrome('/Users/bernettechan/chromedriver-mac-x64/chromedriver') # initialize chromedriver
-
-# # go to home page
-# driver.get('https://now.calpoly.edu/') 
-# time.sleep(3)
-
-# # wait for "SIGN IN" link to be clickable and then click
-# try:
-#     signin_button = WebDriverWait(driver, 10).until(
-#         EC.element_to_be_clickable((By.LINK_TEXT, "SIGN IN"))
-#     )
-#     signin_button.click()  # click on Sign In button
-# except Exception as e:
-#     print(f"Error clicking sign in: {e}")
-
-# time.sleep(3)
-
-# # manula log in
-# print("Please log in manually")
-# time.sleep(10) # long enough to login
-
-# cookies = driver.get_cookies()
-# with open("cookies.pkl", "wb") as cookie_file:
-#     pickle.dump(cookies, cookie_file) # save cookies after manual login
-
-# # open site again with cookies loaded
-# driver.get('https://now.calpoly.edu/') # open site again, this time logged in
-# time.sleep(1)
-
-# # load cookies from file & add to browser
-# with open("cookies.pkl", "rb") as cookie_file:
-#     cookies = pickle.load(cookie_file)
-#     for cookie in cookies:
-#         driver.add_cookie(cookie) # add each cookie to browser
-
-# driver.refresh() # make sure session applied correctly
-
-# driver.get("https://now.calpoly.edu/actionCenter/organization/wish/Finance/CreatePurchaseRequest") # PRF page
-# time.sleep(5)
-
-
-
-# # driver.quit()
-
+# automating part
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -116,14 +60,12 @@ else:
     with open("cookies.pkl", "wb") as cookie_file:
         pickle.dump(cookies, cookie_file)
     
-    # Now access the form
+    # access form
     driver.get('https://now.calpoly.edu/actionCenter/organization/wish/Finance/CreatePurchaseRequest')  # PRF form page
     time.sleep(5)
 
 # check if you're on the form page
 print("Now on the PRF form!")
+input("Press Enter to close the browser...") 
 
-# Add debugging output to keep the browser open and debug what's happening
-input("Press Enter to close the browser...")
-
-# driver.quit()  # Don't quit immediately; let user inspect if necessary
+# driver.quit()  # don't quit immediately
