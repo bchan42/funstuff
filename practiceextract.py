@@ -10,6 +10,7 @@ def split_name(name):
     first_name, last_name = name_parts[0], name_parts[1]
     return first_name, last_name
 
+
 # parse address into street, city, state, zip 
 def parse_address(address):
     parsed_address, address_type = usaddress.tag(address)
@@ -22,7 +23,6 @@ def parse_address(address):
     zip_code = parsed_address.get('ZipCode', '')
 
     return street.strip(), apartment.strip(), city.strip(), state.strip(), zip_code.strip()
-
 
 
 for index, row in fake_prf.iterrows():
@@ -48,7 +48,7 @@ for index, row in fake_prf.iterrows():
     email = row['Cal Poly Email address']
     phone = row["Phone Number (you don't have to include the dashes)"]
 
-    # payment / reciept
+    # payment / receipt
     payment_type = row['Payment Type'] # selection
     receive_payment = row["Receiving Payment If you're not enrolled in direct deposit and would like to do so, fill out this form (this is optional)"]
     receipt_url = row["Combine all your receipts or invoices into one pdf and upload here (make sure receipts are itemized) *NOTE: If the last 4 digits of the card used is not visible, please attach a bank/credit card statement with the transaction for proof of payment"]
